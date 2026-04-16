@@ -20,7 +20,7 @@ public class PotionTest {
 
     @Test
     public void shouldStoreHealingAmount() {
-        assertEquals(25, potion.getHealingAmount());
+        assertEquals(25, potion.getHealingAmount()); //
     }
 
     @Test
