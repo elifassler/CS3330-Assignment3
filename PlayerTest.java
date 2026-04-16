@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// I did this whole class, then realized that I could've used @BeforeEach instead of initializing the objects in every method.
+// I did this whole class, then I realized that I could've used @BeforeEach instead of initializing the objects in every method.
 
 class PlayerTest {
 	
