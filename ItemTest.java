@@ -13,7 +13,7 @@ public class ItemTester {
 	}
 	@Test 
 	void ConstructorAssignsDefaultNameIfNull() {
-	//Sets default name if name is null
+	//Sets default name if the name is null
 	Weapon item = new Weapon (null, "Strange Sword", 15);
 	assertEquals("Unknown Weapon", item.getName());
 	}
