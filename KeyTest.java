@@ -11,7 +11,7 @@ public class KeyTester {
 	public KeyTester() {
 		@Test
 		void constructorSetsKeyProperties() { 
-			key key = new key("Trumans Key", "Opens all buildings on campus");
+			Key key = new key("Trumans Key", "Opens all buildings on campus");
 			assertEquals("Trumans Key", key.getName());
 			assertEquals("Opens all buildings on campus", key.getDescription());
 			
