@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BossMonsterTester {
 
     @Test
-    void shouldReturnBaseAttackWhenHealthIsHigh() {
+    void returnBaseAttackWhenHealthIsHigh() {
         // makes sure boss cannot use enraged attack at high health 
         BossMonster boss = new BossMonster("Moon Choi", 100, 10, 5, new ArrayList<>(), 5);
         assertEquals(10, boss.getCurrentAttack());
@@ -17,7 +17,7 @@ public class BossMonsterTester {
 
     @ParameterizedTest
     @ValueSource(ints = {50, 25, 10})
-    void shouldReturnEnragedAttackWhenHealthIsLow(int currentHealth) {
+    void returnEnragedAttackWhenHealthIsLow(int currentHealth) {
         // makes sure bosses health is < 50 for enraged attack 
         BossMonster boss = new BossMonster("Moon Choi", 100, 10, 5, new ArrayList<>(), 5);
         boss.setHealth(currentHealth);
@@ -26,7 +26,7 @@ public class BossMonsterTester {
     }
 
     @Test
-    void constructorShouldSetInheritedFields() {
+    void constuctorSetsInheritedFields() {
         // makes sure super constructor sets correct name 
         BossMonster boss = new BossMonster("Moon Choi", 100, 10, 5, new ArrayList<>(), 5);
         assertEquals("Moon Choi", boss.getName());
