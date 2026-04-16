@@ -1,10 +1,13 @@
 package com.example.haunted.model;
 
 import org.junit.jupiter.api.Test;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+// I did this whole class, then realized that I could've used @BeforeEach instead of initializing the objects in every method.
 
 class PlayerTest {
 	
@@ -139,5 +142,47 @@ class PlayerTest {
 		assertEquals(20, player.getAttackPower());
 	}
 	
+	@Test
+	void getAttackPowerWithWeaponShouldHaveBonus() {
+		Inventory i = new Inventory(50);
+		Player player = new Player("Eli", 100, 10, 5, i); // Test object
+		
+		Weapon w = new Weapon("Sword", "Iron", 5);
+		
+		player.equipWeapon(w);
+		
+		assertEquals(15, player.getAttackPower());
+	}
+	
+	@Test
+	void getDefensePowerWithArmorShouldHaveBonus() {
+		Inventory i = new Inventory(50);
+		Player player = new Player("Eli", 100, 10, 5, i); // Test object
+		
+		Armor a = new Armor("Armor", "Iron", 5);
+		
+		player.equipArmor(a);
+		
+		assertEquals(10, player.getDefensePower());
+	}
+	
+	@Test
+	void equipWeaponShouldThrow() {
+		Inventory i = new Inventory(50);
+		Player player = new Player("Eli", 100, 10, 5, i); // Test object
+		
+		assertThrows(NullPointerException.class, () -> player.equipArmor(null));
+	}
+	
+	@ParameterizedTest
+	@ValueSource (ints = {0, 1, 50, 100})
+	void takeDamagePTest(int damage) {
+		Inventory i = new Inventory(50);
+		Player player = new Player("Eli", 100, 10, 5, i); // Test object
+		
+		player.takeDamage(damage);
+		
+		assertTrue(player.getHealth() >= 0);
+	}
 	
 }
