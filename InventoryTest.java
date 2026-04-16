@@ -1,4 +1,3 @@
-
 package com.example.haunted.model;
 
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ public class InventoryTester {
     void returnTrueWhenNotFull() {
         // makes sure items can be added when capacity is not full 
         Inventory inventory = new Inventory(5);
-        Key key = new Key("Moon Choi's Key", "Opens the main office");
+        Key key = new Key("Moon Choi's Key", "Opens Moon Chois office");
         
         assertTrue(inventory.addItem(key));
         assertEquals(1, inventory.getItems().size());
@@ -22,25 +21,25 @@ public class InventoryTester {
     void returnFalseWhenFull() {
         // prevents items from being added when capacity is full
         Inventory inventory = new Inventory(1);
-        inventory.addItem(new Key("Key 1", "Description"));
+        inventory.addItem(new Key("Trumans Key", "opens all doors "));
         
-        boolean result = inventory.addItem(new Key("Key 2", "Description"));
+        boolean result = inventory.addItem(new Key("Ekin's Key", "Opens Tucker Hall"));
         
         assertFalse(result);
         assertEquals(1, inventory.getItems().size());
     }
 
-    @ParameterizedTest 
+    @ParameterizedTest // Ai Used for parameterized testing prompt: What should parameterized testing for inventory look like 
     @ValueSource(strings = {"Moon Choi's Key", "MOON CHOI'S KEY", "moon choi's key"})
     void findItemISCaseInsensitive(String searchName) {
         // makes sure items can be found regardless of case sensitivity 
         Inventory inventory = new Inventory(5);
-        inventory.addItem(new Key("Moon Choi's Key", "Description"));
+        inventory.addItem(new Key("Moon Choi's Key", "Opens Moon Chois office"));
         
         assertTrue(inventory.findItem(searchName).isPresent());
     }
     
-    @ParameterizedTest
+    @ParameterizedTest  
     @ValueSource(ints = {1, 5, 10})
     void isFullShouldReturnTrueWhenAtCapacity(int capacity) {
         Inventory inventory = new Inventory(capacity);
